@@ -13,7 +13,6 @@ class Dropbox
      */
     public function __construct($appid,$secret,Client $httpClient)
     {
-        echo "Constructing";
         $this->appid=$appid;
         $this->secret=$secret;
         $this->httpClient=$httpClient;
