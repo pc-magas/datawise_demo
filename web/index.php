@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+$autoloader=require_once __DIR__ . '/../vendor/autoload.php';
 
 use PCMagas\Dropbox;
 use PCMagas\DropboxFactory;

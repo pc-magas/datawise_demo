@@ -1,6 +1,6 @@
 <?php
 
-namespace PCMagas\DropboxFactory;
+namespace PCMagas;
 
 use \GuzzleHttp\Client; 
 
