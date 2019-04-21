@@ -2,6 +2,7 @@
 
 $autoloader=require_once __DIR__ . '/../vendor/autoload.php';
 
+// PCMagas namespace is being PSR-4 autoloaded
 use PCMagas\Dropbox;
 use PCMagas\DropboxFactory;
 use GuzzleHttp\Client;
