@@ -1,7 +1,7 @@
 <?php
 namespace PCMagas\Exceptions;
 
-class FileNotFoundException extends Exception {
+class FileNotFoundException extends \Exception {
 
     /**
      * @param String $file The path that Does not exist
