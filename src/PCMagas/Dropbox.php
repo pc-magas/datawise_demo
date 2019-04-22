@@ -1,6 +1,7 @@
 <?php
 
 namespace PCMagas;
+define("DROPBOX_OAUTH_LOGIN_URL","https://www.dropbox.com/oauth2/authorize");
 
 use \GuzzleHttp\Client; 
 
@@ -11,11 +12,22 @@ class Dropbox
      * @param String $secret The dropbox Secret
      * @param Client $httpClient The interface used to consume the Dropbox Rest API
      */
-    public function __construct($appid,$secret,Client $httpClient)
+    public function __construct($appId,$secret,Client $httpClient)
     {
-        $this->appid=$appid;
+        $this->appId=$appId;
         $this->secret=$secret;
         $this->httpClient=$httpClient;
+    }
+
+    /**
+     * Generate the url used for User Authorization to the App.
+     * @param String $rediurectUrl The usrl used in order to redirect the app.
+     * @return String with the correct OAuth url
+     */
+    public function getOAuthAutorizeUrl($rediurectUrl)
+    {
+        //For ease of use and development time saving, we utilize a direct token fetch.
+        return DROPBOX_OAUTH_LOGIN_URL."?client_id={$this->appId}&response_type=token&redirectUrl=";
     }
 
     /**

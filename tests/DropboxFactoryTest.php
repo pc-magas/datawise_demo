@@ -1,10 +1,12 @@
 <?php
 
-namespace Tests;
+namespace PcMagas\Tests;
 
 use PcMagas\DropBoxFactory;
+use PcMagas\Exceptions\FileNotFoundException;
 use phpmock\MockBuilder;
 use phpmock\functions\FixedValueFunction;
+use PHPUnit\Framework\TestCase;
 
 class DropboxFactoryTest extends TestCase
 {
@@ -20,9 +22,14 @@ class DropboxFactoryTest extends TestCase
          ->setName("file_exists")
          ->setFunctionProvider(new FixedValueFunction(FALSE));
 
-        $mockGuzzleClient = $this->getMock(GuzzleHttp\Client::class);
+        $mockGuzzleClient = $this->getMockBuilder(\GuzzleHttp\Client::class)
+            ->disableOriginalConstructor()
+            ->disableOriginalClone()
+            ->disableArgumentCloning()
+            ->disallowMockingUnknownTypes()
+            ->getMock();
         
-        $this->expectException(PcMagas\Exceptions\FileNotFoundException);
+        $this->expectException(FileNotFoundException::class);
         DropboxFactory::fromIniFile('example.ini', $mockGuzzleClient);
     }
 
