@@ -23,6 +23,8 @@
    text-align:center;
    line-height:100px;
    border-radius:10px;
+   font-size:18px;
+   text-decoration:none;
   }
  </style>
 </head>
