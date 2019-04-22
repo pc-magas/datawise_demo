@@ -3,6 +3,7 @@
 namespace PCMagas;
 
 use \GuzzleHttp\Client; 
+use PCMagas\Exceptions\FileNotFoundException;
 
 class DropboxFactory
 {
@@ -14,8 +15,14 @@ class DropboxFactory
      */
     public static function fromIniFile($path,Client $client)
     {
+        if( !file_exists($path) ){
+         throw new FileNotFoundException($path);
+        }
+
         $iniArray = parse_ini_file($path);
-        if($iniArray === FALSE) throw new Exception("Could not parse the Ini file", 244);
+        if($iniArray === FALSE){
+            throw new Exception("Could not parse the Ini file", 244);
+        } 
         
         return new Dropbox($iniArray['key'],$iniArray['secret'],$client);
     }
