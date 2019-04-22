@@ -26,8 +26,6 @@ $router= new Router($dropbox, $iniArray['app_url']);
 Flight::route('/', [$router,'homepage']);
 
 // Route that lists the files
-Flight::route('/files', function(){
-    echo 'hello world!';
-});
+Flight::route('/files', [$router,'fileList']);
 
 Flight::start();

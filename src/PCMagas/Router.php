@@ -26,4 +26,11 @@ class Router {
     $url = $this->generateUrl('/files');
     \Flight::render(VIEWS_DIR.'/frontpage.html.php',['login_url'=>$this->dropbox->getOAuthAutorizeUrl($url)]);
   }
+
+  public function fileList()
+  {
+    $code=\Flight::request()->query["code"];
+    echo "Hello";
+    echo \Flight::request()->query["code"];
+  }
 }
