@@ -95,15 +95,16 @@ class Dropbox
         }
 
         $body=$response->getBody()->getContents();
-        $body=json_decode($body);
+        $body=json_decode($body,true);
         $_SESSION['token']=$body['access_token'];
         return $_SESSION['token'];
     }
 
     /**
+     * @param String $accessToken The access token 
      * @return array containing the files and directoried of user's dropbox
      */
-    public function getFileList()
+    public function getFileList($accessToken)
     {
         //Dummy Logic
         return ["aaa"=>"aaa"];

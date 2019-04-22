@@ -32,9 +32,10 @@ class Router {
     $code=\Flight::request()->query["code"];
 
     try {
-      $this->dropbox->getToken($code);
+      $token=$this->dropbox->getToken($code);
     } catch(Exception $e) {
-
+      echo $e->getMessage();
     }
+    echo $token;
   }
 }
