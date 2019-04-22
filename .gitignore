@@ -1,3 +1,4 @@
 vendor
 *.ini
 .vagrant
+.env
