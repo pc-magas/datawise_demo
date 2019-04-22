@@ -17,7 +17,9 @@ class Router {
       throw new \InvalidArgumentException('Provide a valid route');
     }
     
-    return str_replace('//','/',"$this->appHost/$route");
+    $appHost=preg_replace('/\/$/','',$this->appHost);
+    $route=preg_replace('/^\//','',$route);
+    return "$appHost/$route";
   }
 
   public function homepage(){

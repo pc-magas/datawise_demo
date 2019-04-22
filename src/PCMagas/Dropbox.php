@@ -27,7 +27,7 @@ class Dropbox
     public function getOAuthAutorizeUrl($rediurectUrl)
     {
         //For ease of use and development time saving, we utilize a direct token fetch.
-        return DROPBOX_OAUTH_LOGIN_URL."?client_id={$this->appId}&response_type=token&redirectUrl={$rediurectUrl}";
+        return DROPBOX_OAUTH_LOGIN_URL."?client_id={$this->appId}&response_type=token&redirect_uri={$rediurectUrl}";
     }
 
     /**
