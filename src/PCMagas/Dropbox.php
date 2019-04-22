@@ -95,8 +95,9 @@ class Dropbox
         }
 
         $body=$response->getBody()->getContents();
-
-        echo "<br>".$body;
+        $body=json_decode($body);
+        $_SESSION['token']=$body['access_token'];
+        return $_SESSION['token'];
     }
 
     /**
