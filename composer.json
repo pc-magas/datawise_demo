@@ -10,7 +10,10 @@
     },
     "autoload": {
         "psr-4":{
-            "": "src/"
+            "PCMagas\\": "src/PCMagas"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "PCMagas\\Tests\\": "tests/" }
     }
 }
