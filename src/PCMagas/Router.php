@@ -36,6 +36,9 @@ class Router {
     } catch(Exception $e) {
       echo $e->getMessage();
     }
-    echo $token;
+
+    $files=$this->dropbox->getFileList($token);
+
+    print_r($files);
   }
 }
