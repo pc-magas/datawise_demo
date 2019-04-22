@@ -2,18 +2,25 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 define('VIEWS_DIR', __DIR__.'/../views');
-define('AppHost',getEnv('APP_URL'));
+define('PARAMS_FILE',__DIR__."/../params.ini");
 
 // PCMagas namespace is being PSR-4 autoloaded
 use PCMagas\Dropbox;
-use PCMagas\DropboxFactory;
 use PCMagas\Router;
 use GuzzleHttp\Client;
 
-$guzzle=new Client();
-$dropbox=DropboxFactory::fromIniFile(__DIR__."/../params.ini", $guzzle);
+if( !file_exists(PARAMS_FILE) ){
+    die('Parameter File Does not exist');
+}
 
-$router= new Router($dropbox);
+$iniArray = parse_ini_file(PARAMS_FILE);
+if($iniArray===FALSE){
+    die('Misconfigured parameter file.');
+}
+
+$guzzle=new Client();
+$dropbox=new DropBox($iniArray['dropbox_key'],$iniArray['dropbox_secret'], $guzzle);
+$router= new Router($dropbox, $iniArray['app_url']);
 
 // Frontpage in order to render the login button into the url.
 Flight::route('/', [$router,'homepage']);

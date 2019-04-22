@@ -1,4 +1,9 @@
+; Set the application url
+app_url="https://datawise.test/"
+
+
+[dropbox]
 ; App Key
-key=""
+dropbox_key=""
 ; App Secret
-secret=""
+dropbox_secret=""
