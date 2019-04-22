@@ -7,3 +7,10 @@
 # If you have user-specific configurations you would like
 # to apply, you may also create user-customizations.sh,
 # which will be run after this script.
+
+echo "I am the user ${USER}"
+
+cd ~/code
+composer install
+composer dump-autoload -o
+cd
