@@ -22,9 +22,9 @@ $guzzle=new Client();
 $dropbox=new DropBox($iniArray['dropbox_key'],$iniArray['dropbox_secret'], $guzzle);
 $router= new Router($dropbox, $iniArray['app_url']);
 
+Flight::set('flight.views.path', VIEWS_DIR);
 // Frontpage in order to render the login button into the url.
 Flight::route('/', [$router,'homepage']);
-
 // Route that lists the files
 Flight::route('/files', [$router,'fileList']);
 

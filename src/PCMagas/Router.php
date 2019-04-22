@@ -1,6 +1,7 @@
 <?php
 namespace PcMagas;
 
+
 use \PcMagas\Dropbox;
 use \PcMagas\Helpers;
 
@@ -24,7 +25,7 @@ class Router {
 
   public function homepage(){
     $url = $this->generateUrl('/files');
-    \Flight::render(VIEWS_DIR.'/frontpage.html.php',['login_url'=>$this->dropbox->getOAuthAutorizeUrl($url)]);
+    \Flight::render('frontpage.html.php',['login_url'=>$this->dropbox->getOAuthAutorizeUrl($url)]);
   }
 
   public function fileList()
@@ -39,6 +40,6 @@ class Router {
 
     $files=$this->dropbox->getFileList($token);
 
-    print_r($files);
+    \Flight::render('list.html.php',['array'=>$files]);
   }
 }
