@@ -12,9 +12,6 @@
 namespace PCMagas\Exceptions;
 
 class ErrorCodes {
- // FileIO $Error Codes
- const FILE_NOT_FOUND=111;
- const FILE_NOR_CORRECT_PERMISSIONS=122;
 
  // DropBoxApiErrorCode
  const USER_NOT_AUTHORISED=221;

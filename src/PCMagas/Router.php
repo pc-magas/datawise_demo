@@ -30,7 +30,11 @@ class Router {
   public function fileList()
   {
     $code=\Flight::request()->query["code"];
-    echo "Hello";
-    echo \Flight::request()->query["code"];
+
+    try {
+      $this->dropbox->getToken($code);
+    } catch(Exception $e) {
+
+    }
   }
 }
